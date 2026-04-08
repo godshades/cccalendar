@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CC Calendar — Theo dõi thanh toán thẻ tín dụng, ngày đến hạn và hoàn tiền.">
+  <title>CC Calendar — Theo Dõi Thẻ Tín Dụng</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cc-cal.pages.dev/">
+  <meta property="og:title" content="CC Calendar — Theo Dõi Thẻ Tín Dụng">
+  <meta property="og:description" content="Theo dõi thanh toán thẻ tín dụng, ngày đến hạn và hoàn tiền.">
+  <meta property="og:image" content="https://cc-cal.pages.dev/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="vi_VN">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://cc-cal.pages.dev/">
+  <meta property="twitter:title" content="CC Calendar — Theo Dõi Thẻ Tín Dụng">
+  <meta property="twitter:description" content="Theo dõi thanh toán thẻ tín dụng, ngày đến hạn và hoàn tiền.">
+  <meta property="twitter:image" content="https://cc-cal.pages.dev/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" sizes="32x32" href="favicon-32x32.svg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            'xs': '390px',
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            },
+            neutral: {
+              50: '#fafafa',
+              100: '#f5f5f5',
+              200: '#e5e5e5',
+              300: '#d4d4d4',
+              400: '#a3a3a3',
+              500: '#737373',
+              600: '#525252',
+              700: '#404040',
+              800: '#262626',
+              900: '#171717',
+            }
+          },
+          fontFamily: {
+            display: ['"Be Vietnam Pro"', 'sans-serif'],
+            body: ['"Be Vietnam Pro"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+
+  <!-- LZ-String -->
+  <script src="https://cdn.jsdelivr.net/npm/lz-string@1.5.0/libs/lz-string.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-body bg-neutral-50 text-neutral-800 min-h-screen" x-data="ccCalendar()" x-init="init()">
+
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-neutral-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-12 sm:h-16">
+        <div class="flex items-center gap-1.5 sm:gap-3">
+          <div
+            class="w-7 h-7 sm:w-9 sm:h-9 bg-brand-600 rounded-md sm:rounded-lg flex items-center justify-center shadow-md">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h1 class="text-sm sm:text-lg lg:text-xl font-bold text-neutral-900 tracking-tight hidden xs:hidden sm:block">
+            CC Calendar</h1>
+        </div>
+
+        <div class="flex items-center gap-1 sm:gap-4">
+          <button @click="prevMonth()"
+            class="p-1.5 sm:p-2 rounded-lg hover:bg-neutral-100 transition-colors touch-target" title="Tháng trước">
+            <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <span class="text-xs sm:text-base font-semibold text-neutral-800 min-w-[70px] sm:min-w-[140px] text-center"
+            x-text="monthLabel()"></span>
+          <button @click="nextMonth()"
+            class="p-1.5 sm:p-2 rounded-lg hover:bg-neutral-100 transition-colors touch-target" title="Tháng sau">
+            <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="flex items-center bg-neutral-100 rounded-lg p-0.5">
+          <button @click="currentView = 'calendar'"
+            :class="currentView === 'calendar' ? 'bg-white shadow-sm text-brand-700' : 'text-neutral-500 hover:text-neutral-700'"
+            class="px-2 py-1 sm:px-3 sm:py-1.5 rounded-md text-xs font-medium transition-all touch-target min-w-[32px] sm:min-w-[44px]">
+            <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span class="hidden sm:inline">Lịch</span>
+          </button>
+          <button @click="currentView = 'list'"
+            :class="currentView === 'list' ? 'bg-white shadow-sm text-brand-700' : 'text-neutral-500 hover:text-neutral-700'"
+            class="px-2 py-1 sm:px-3 sm:py-1.5 rounded-md text-xs font-medium transition-all touch-target min-w-[32px] sm:min-w-[44px]">
+            <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+            </svg>
+            <span class="hidden sm:inline">Danh sách</span>
+          </button>
+          <button @click="currentView = 'matrix'"
+            :class="currentView === 'matrix' ? 'bg-white shadow-sm text-brand-700' : 'text-neutral-500 hover:text-neutral-700'"
+            class="px-2 py-1 sm:px-3 sm:py-1.5 rounded-md text-xs font-medium transition-all touch-target min-w-[32px] sm:min-w-[44px]">
+            <svg class="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+            <span class="hidden sm:inline">Matrix</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+
+    <!-- ===== CALENDAR VIEW ===== -->
+    <div x-show="currentView === 'calendar'" x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
+      <!-- Calendar Header -->
+      <div class="mb-3 sm:mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <h2 class="text-base sm:text-xl font-bold text-neutral-900" x-text="monthLabel()"></h2>
+        <div class="flex gap-1.5 sm:gap-2">
+          <button @click="showExportModal = true"
+            class="inline-flex items-center gap-1 sm:gap-2 px-2 py-1.5 sm:py-2 bg-white border border-neutral-200 rounded-lg text-[10px] sm:text-xs font-medium text-neutral-700 hover:bg-neutral-50 transition-colors shadow-sm touch-target-pad">
+            <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span class="hidden xs:inline">Xuất</span>
+          </button>
+          <button @click="showImportModal = true"
+            class="inline-flex items-center gap-1 sm:gap-2 px-2 py-1.5 sm:py-2 bg-white border border-neutral-200 rounded-lg text-[10px] sm:text-xs font-medium text-neutral-700 hover:bg-neutral-50 transition-colors shadow-sm touch-target-pad">
+            <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+            </svg>
+            <span class="hidden xs:inline">Nhập</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Calendar Grid -->
+      <div class="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-neutral-200 overflow-hidden">
+        <!-- Day Headers -->
+        <div class="grid grid-cols-7 bg-neutral-50 border-b border-neutral-200">
+          <template x-for="day in ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN']" :key="day">
+            <div
+              class="py-1.5 sm:py-3 text-center text-[10px] sm:text-sm font-semibold text-neutral-600 uppercase tracking-wider"
+              x-text="day"></div>
+          </template>
+        </div>
+
+        <!-- Calendar Days -->
+        <div class="grid grid-cols-7">
+          <!-- Empty cells for days before the 1st -->
+          <template x-for="empty in firstDayOffset()" :key="'empty-' + empty">
+            <div
+              class="min-h-[50px] sm:min-h-[80px] lg:min-h-[100px] bg-neutral-50/50 border-b border-r border-neutral-100">
+            </div>
+          </template>
+
+          <!-- Day cells -->
+          <template x-for="day in daysInMonth()" :key="'day-' + day">
+            <div
+              class="min-h-[50px] sm:min-h-[80px] lg:min-h-[100px] border-b border-r border-neutral-100 p-0.5 sm:p-1.5 relative group hover:bg-brand-50/30 transition-colors"
+              :class="{ 'bg-brand-50/50': isToday(day) }">
+              <!-- Day Number -->
+              <span
+                class="inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-[10px] sm:text-xs lg:text-sm font-medium rounded-full"
+                :class="isToday(day) ? 'bg-brand-600 text-white' : 'text-neutral-700'" x-text="day"></span>
+
+              <!-- Card Badges for Payment Due Dates -->
+              <div class="mt-0.5 space-y-0.5">
+                <template x-for="card in getCardsDueOnDay(day)" :key="card.id">
+                  <div
+                    class="px-1 py-0.5 rounded text-[9px] sm:text-[10px] lg:text-xs font-medium truncate cursor-pointer transition-all hover:shadow-sm"
+                    :class="card.maxReached ? 'bg-neutral-200 text-neutral-500 line-through' : 'bg-brand-100 text-brand-800 hover:bg-brand-200'"
+                    @click="toggleMaxReached(card.id)"
+                    :title="card.name + (card.note ? ' — ' + card.note : '') + ' — Ngày ' + card.paymentDueDate">
+                    <span x-text="truncateCardName(card.name)"></span>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- Add Card Button -->
+      <div class="mt-3 sm:mt-6 flex justify-center">
+        <button @click="showCardBrowser = true"
+          class="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-brand-600 text-white rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/25">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+          <span class="sm:hidden">Thêm</span>
+          <span class="hidden sm:inline">Thêm thẻ</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== LIST VIEW ===== -->
+    <div x-show="currentView === 'list'" x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+      style="display: none;">
+      <!-- List Header -->
+      <div class="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <h2 class="text-lg sm:text-xl font-bold text-neutral-900">Thẻ của bạn</h2>
+        <div class="flex gap-2">
+          <button @click="showExportModal = true"
+            class="inline-flex items-center gap-2 px-3 py-2 sm:py-2 bg-white border border-neutral-200 rounded-lg text-xs sm:text-sm font-medium text-neutral-700 hover:bg-neutral-50 transition-colors shadow-sm touch-target-pad">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span class="hidden sm:inline">Xuất dữ liệu</span>
+          </button>
+          <button @click="showImportModal = true"
+            class="inline-flex items-center gap-2 px-3 py-2 sm:py-2 bg-white border border-neutral-200 rounded-lg text-xs sm:text-sm font-medium text-neutral-700 hover:bg-neutral-50 transition-colors shadow-sm touch-target-pad">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+            </svg>
+            <span class="hidden sm:inline">Nhập dữ liệu</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div x-show="userCards.length === 0" class="text-center py-12 sm:py-16">
+        <div
+          class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-neutral-100 rounded-full flex items-center justify-center">
+          <svg class="w-8 h-8 sm:w-10 sm:h-10 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+          </svg>
+        </div>
+        <h3 class="text-base sm:text-lg font-semibold text-neutral-700 mb-2">Chưa có thẻ nào</h3>
+        <p class="text-sm sm:text-base text-neutral-500 mb-6">Hãy thêm thẻ tín dụng để bắt đầu theo dõi.</p>
+        <button @click="showCardBrowser = true"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 text-white rounded-xl text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/25">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+          Thêm thẻ
+        </button>
+      </div>
+
+      <!-- Cards List -->
+      <div x-show="userCards.length > 0" class="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <template x-for="card in userCards" :key="card.id">
+          <div
+            class="bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden transition-all hover:shadow-md"
+            :class="card.maxReached ? 'opacity-60' : ''">
+            <!-- Card Header -->
+            <div class="p-3 sm:p-4 border-b border-neutral-100"
+              :class="card.maxReached ? 'bg-neutral-50' : 'bg-gradient-to-r from-brand-50 to-brand-100/50'">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="text-sm sm:text-base font-bold text-neutral-900"
+                    :class="card.maxReached ? 'line-through text-neutral-500' : ''" x-text="card.name"></h3>
+                  <p class="text-xs sm:text-sm text-neutral-500 mt-0.5" x-text="card.bank"></p>
+                </div>
+                <button @click="removeCard(card.id)"
+                  class="p-2 sm:p-1.5 rounded-lg text-neutral-400 hover:text-red-500 hover:bg-red-50 transition-colors touch-target"
+                  title="Xóa thẻ">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-3 sm:p-4 space-y-2 sm:space-y-3">
+              <!-- Payment Due Date -->
+              <div class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-400 flex-shrink-0" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span class="text-xs sm:text-sm text-neutral-600">Ngày thanh toán:</span>
+                <span class="text-xs sm:text-sm font-semibold text-neutral-900"
+                  x-text="'Ngày ' + card.paymentDueDate"></span>
+              </div>
+
+              <!-- Note -->
+              <div x-show="card.note" class="flex items-start gap-2">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-400 flex-shrink-0 mt-0.5" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+                <span class="text-xs sm:text-sm text-neutral-500 italic" x-text="card.note"></span>
+              </div>
+
+              <!-- Cashback Categories -->
+              <div>
+                <p class="text-xs sm:text-sm font-medium text-neutral-700 mb-1.5 sm:mb-2">Hoàn tiền:</p>
+                <div class="space-y-1 sm:space-y-1.5">
+                  <template x-for="cat in card.cashbackCategories" :key="cat.category">
+                    <div class="flex items-center justify-between text-xs sm:text-sm">
+                      <span class="text-neutral-600 truncate" x-text="cat.category"></span>
+                      <span class="font-semibold text-brand-700 flex-shrink-0 ml-2"
+                        x-text="(cat.rate && cat.rate.indexOf('%') !== -1 ? cat.rate : cat.rate + '%')"></span>
+                    </div>
+                  </template>
+                </div>
+              </div>
+
+              <!-- Max Reached Toggle -->
+              <button @click="toggleMaxReached(card.id)"
+                class="w-full mt-2 flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors touch-target"
+                :class="card.maxReached ? 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200' : 'bg-brand-50 text-brand-700 hover:bg-brand-100'">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span x-text="card.maxReached ? 'Đã đạt max hoàn tiền tháng này' : 'Đánh dấu đạt max hoàn tiền'"></span>
+              </button>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- Add Card Button (List View) -->
+      <div x-show="userCards.length > 0" class="mt-6 flex justify-center">
+        <button @click="showCardBrowser = true"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 text-white rounded-xl text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/25">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+          Thêm thẻ
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== MATRIX VIEW ===== -->
+    <div x-show="currentView === 'matrix'" x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+      style="display: none;">
+      <div class="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <h2 class="text-lg sm:text-xl font-bold text-neutral-900">Matrix hoàn tiền</h2>
+        <button @click="showCategoryManager = true"
+          class="inline-flex items-center gap-2 px-3 py-2 bg-white border border-neutral-200 rounded-lg text-xs sm:text-sm font-medium text-neutral-700 hover:bg-neutral-50 transition-colors shadow-sm touch-target-pad">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+          <span>Quản lý danh mục</span>
+        </button>
+        <button @click="toggleMatrixOrientation()"
+          class="inline-flex items-center gap-2 px-3 py-2 bg-white border border-neutral-200 rounded-lg text-xs sm:text-sm font-medium text-neutral-700 hover:bg-neutral-50 transition-colors shadow-sm touch-target-pad">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          </svg>
+          <span x-text="matrixOrientation === 'cards-as-rows' ? 'Đổi: Thẻ → Danh mục' : 'Đổi: Danh mục → Thẻ'"></span>
+        </button>
+      </div>
+
+      <!-- Empty State -->
+      <div x-show="userCards.length === 0" class="text-center py-12 sm:py-16">
+        <div
+          class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-neutral-100 rounded-full flex items-center justify-center">
+          <svg class="w-8 h-8 sm:w-10 sm:h-10 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          </svg>
+        </div>
+        <h3 class="text-base sm:text-lg font-semibold text-neutral-700 mb-2">Chưa có dữ liệu</h3>
+        <p class="text-sm sm:text-base text-neutral-500 mb-6">Hãy thêm thẻ tín dụng để xem Matrix hoàn tiền.</p>
+        <button @click="showCardBrowser = true"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 text-white rounded-xl text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/25">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+          Thêm thẻ
+        </button>
+      </div>
+
+      <!-- Matrix Table - Cards as Rows -->
+      <div x-show="userCards.length > 0 && matrixOrientation === 'cards-as-rows'" class="overflow-x-auto">
+        <table class="min-w-[600px] w-full bg-white rounded-xl border border-neutral-200 overflow-hidden">
+          <thead class="bg-neutral-50 border-b border-neutral-200">
+            <tr>
+              <th
+                class="sticky left-0 bg-neutral-50 px-3 py-3 text-left text-xs sm:text-sm font-semibold text-neutral-600 uppercase tracking-wider border-r z-10">
+                Thẻ</th>
+              <template x-for="cat in getAllCategories()" :key="cat">
+                <th
+                  class="px-2 py-3 text-center text-xs sm:text-sm font-semibold text-neutral-600 uppercase tracking-wider min-w-[80px]">
+                  <button @click="openRateEditor(card.id, cat, getMatrixRate(card.name, cat))"
+                    class="hover:text-brand-600" x-text="cat"></button>
+                </th>
+              </template>
+              <th
+                class="px-3 py-3 text-center text-xs sm:text-sm font-semibold text-neutral-600 uppercase tracking-wider">
+                Ghi chú</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100">
+            <template x-for="card in userCards" :key="card.id">
+              <tr class="hover:bg-neutral-50 transition-colors">
+                <td class="sticky left-0 bg-white px-3 py-3 text-sm font-medium text-neutral-900 border-r z-10"
+                  x-text="card.name"></td>
+                <template x-for="cat in getAllCategories()" :key="cat">
+                  <td class="px-2 py-3 text-center">
+                    <template x-if="getMatrixRate(card.name, cat)">
+                      <span
+                        class="inline-flex items-center px-2 py-1 rounded-md text-xs sm:text-sm font-semibold text-brand-700 bg-brand-50"
+                        x-text="getMatrixRate(card.name, cat) + '%'"></span>
+                    </template>
+                    <template x-if="!getMatrixRate(card.name, cat)">
+                      <span class="text-neutral-400 text-xs">—</span>
+                    </template>
+                  </td>
+                </template>
+                <td class="px-3 py-3 text-center">
+                  <button @click="openNoteEditor(card.id)"
+                    class="p-2 rounded-lg text-neutral-400 hover:text-brand-600 hover:bg-brand-50 transition-colors"
+                    :class="getMatrixNote(card.id) ? 'text-amber-500' : ''">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Matrix Table - Categories as Rows -->
+      <div x-show="userCards.length > 0 && matrixOrientation === 'categories-as-rows'" class="overflow-x-auto">
+        <table class="min-w-[600px] w-full bg-white rounded-xl border border-neutral-200 overflow-hidden">
+          <thead class="bg-neutral-50 border-b border-neutral-200">
+            <tr>
+              <th
+                class="sticky left-0 bg-neutral-50 px-3 py-3 text-left text-xs sm:text-sm font-semibold text-neutral-600 uppercase tracking-wider border-r z-10">
+                Danh mục</th>
+              <template x-for="card in userCards" :key="card.id">
+                <th
+                  class="px-2 py-3 text-center text-xs sm:text-sm font-semibold text-neutral-600 uppercase tracking-wider min-w-[100px]"
+                  x-text="card.name"></th>
+              </template>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100">
+            <template x-for="cat in getAllCategories()" :key="cat">
+              <tr class="hover:bg-neutral-50 transition-colors">
+                <td class="sticky left-0 bg-white px-3 py-3 text-sm font-medium text-neutral-900 border-r z-10"
+                  x-text="cat"></td>
+                <template x-for="card in userCards" :key="card.id">
+                  <td class="px-2 py-3 text-center">
+                    <template x-if="getMatrixRate(card.name, cat)">
+                      <span
+                        class="inline-flex items-center px-2 py-1 rounded-md text-xs sm:text-sm font-semibold text-brand-700 bg-brand-50"
+                        x-text="getMatrixRate(card.name, cat) + '%'"></span>
+                    </template>
+                    <template x-if="!getMatrixRate(card.name, cat)">
+                      <span class="text-neutral-400 text-xs">—</span>
+                    </template>
+                  </td>
+                </template>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Add Card Button (Matrix View) -->
+      <div x-show="userCards.length > 0" class="mt-6 flex justify-center">
+        <button @click="showCardBrowser = true"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 text-white rounded-xl text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/25">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+          Thêm thẻ
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== CARD BROWSER MODAL ==================== -->
+  <div x-show="showCardBrowser" x-cloak class="fixed inset-0 z-50 flex sm:items-center justify-center p-0 sm:p-4"
+    style="display: none;">
+    <div class="absolute inset-0 bg-black/40" @click="showCardBrowser = false"></div>
+
+    <div
+      class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl w-full h-[85vh] sm:h-auto sm:max-w-md overflow-hidden flex flex-col"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0 translate-y-full sm:scale-95"
+      x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100">
+
+      <div class="sm:hidden flex justify-center py-3 cursor-grab active:cursor-grabbing">
+        <div class="w-10 h-1 bg-neutral-300 rounded-full"></div>
+      </div>
+
+      <div class="flex items-center justify-between px-4 sm:p-6 pb-4 sm:pb-6 border-b border-neutral-200">
+        <h2 class="text-lg sm:text-xl font-bold text-neutral-900">Thêm thẻ mới</h2>
+        <button @click="showCardBrowser = false"
+          class="p-2 rounded-lg text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 transition-colors touch-target">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-4 sm:p-6 space-y-4 sm:space-y-5 overflow-y-auto flex-1">
+        <div>
+          <label class="block text-sm font-medium text-neutral-700 mb-1.5">Chọn thẻ</label>
+          <div class="relative">
+            <input type="text" x-model="cardSearchQuery" @input="onCardInput()"
+              @focus="showDropdown = cardSearchQuery.length > 0 && filteredCards.length > 0"
+              @keydown.enter="selectFirstMatch()" @keydown.escape="showDropdown = false"
+              class="w-full px-4 py-3 sm:py-2.5 border border-neutral-300 rounded-lg text-base sm:text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-colors"
+              placeholder="Gõ tên thẻ để tìm...">
+            <div x-show="showDropdown && filteredCards.length > 0" @click.away="showDropdown = false"
+              class="absolute z-10 w-full mt-1 bg-white border border-neutral-200 rounded-lg shadow-lg max-h-40 sm:max-h-48 overflow-y-auto">
+              <template x-for="name in filteredCards" :key="name">
+                <button type="button" @click="selectCardFromDropdown(name)"
+                  class="w-full text-left px-4 py-3 sm:py-2 text-sm hover:bg-brand-50 transition-colors touch-target-pad"
+                  :class="isCardAdded(name) ? 'text-neutral-400' : 'text-neutral-800'" x-text="name">
+                </button>
+              </template>
+            </div>
+          </div>
+          <p x-show="selectedCardName" class="mt-1.5 text-xs text-brand-600 font-medium">
+            Đã chọn: <span x-text="selectedCardName"></span>
+          </p>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-neutral-700 mb-1.5">Ngày thanh toán</label>
+          <input type="number" x-model="selectedCardDate" min="1" max="28"
+            class="w-full px-4 py-3 sm:py-2.5 border border-neutral-300 rounded-lg text-base sm:text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-colors"
+            placeholder="1-28">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-neutral-700 mb-1.5">Ghi chú (tùy chọn)</label>
+          <input type="text" x-model="selectedCardNote"
+            class="w-full px-4 py-3 sm:py-2.5 border border-neutral-300 rounded-lg text-base sm:text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-colors"
+            placeholder="Thêm ghi chú...">
+        </div>
+
+        <button @click="addSelectedCard()"
+          class="w-full py-3 sm:py-3 bg-brand-600 text-white rounded-xl text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/25 touch-target">
+          Thêm thẻ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== EXPORT MODAL ==================== -->
+  <div x-show="showExportModal" x-cloak class="fixed inset-0 z-50 flex sm:items-center justify-center p-0 sm:p-4"
+    style="display: none;">
+    <div class="absolute inset-0 bg-black/40" @click="showExportModal = false"></div>
+
+    <div
+      class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl w-full h-[85vh] sm:h-auto sm:max-w-lg overflow-hidden flex flex-col"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0 translate-y-full sm:scale-95"
+      x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100">
+
+      <div class="sm:hidden flex justify-center py-3 cursor-grab active:cursor-grabbing">
+        <div class="w-10 h-1 bg-neutral-300 rounded-full"></div>
+      </div>
+
+      <div class="flex items-center justify-between px-4 sm:p-6 pb-4 sm:pb-6 border-b border-neutral-200">
+        <h2 class="text-lg sm:text-xl font-bold text-neutral-900">Xuất dữ liệu</h2>
+        <button @click="showExportModal = false"
+          class="p-2 rounded-lg text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 transition-colors touch-target">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1">
+        <p class="text-sm text-neutral-600">Nhấn nút bên dưới để tạo chuỗi mã hóa và sao chép vào clipboard.</p>
+
+        <button @click="exportData()"
+          class="w-full py-3 bg-brand-600 text-white rounded-xl text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/25 touch-target">
+          Tạo và sao chép
+        </button>
+
+        <div x-show="exportResult" class="space-y-2">
+          <div class="p-3 bg-brand-50 border border-brand-200 rounded-lg">
+            <p class="text-sm font-medium text-brand-800" x-text="exportResult"></p>
+          </div>
+          <div x-show="exportedString" class="relative">
+            <textarea readonly x-model="exportedString"
+              class="w-full h-20 sm:h-24 px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-lg text-xs font-mono text-neutral-600 resize-none"></textarea>
+            <button @click="copyExportedString()"
+              class="absolute top-2 right-2 px-2 py-1 bg-white border border-neutral-200 rounded text-xs font-medium text-neutral-600 hover:bg-neutral-50 transition-colors touch-target">
+              Sao chép
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== IMPORT MODAL ==================== -->
+  <div x-show="showImportModal" x-cloak class="fixed inset-0 z-50 flex sm:items-center justify-center p-0 sm:p-4"
+    style="display: none;">
+    <div class="absolute inset-0 bg-black/40" @click="showImportModal = false"></div>
+
+    <div
+      class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl w-full h-[85vh] sm:h-auto sm:max-w-lg overflow-hidden flex flex-col"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0 translate-y-full sm:scale-95"
+      x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100">
+
+      <div class="sm:hidden flex justify-center py-3 cursor-grab active:cursor-grabbing">
+        <div class="w-10 h-1 bg-neutral-300 rounded-full"></div>
+      </div>
+
+      <div class="flex items-center justify-between px-4 sm:p-6 pb-4 sm:pb-6 border-b border-neutral-200">
+        <h2 class="text-lg sm:text-xl font-bold text-neutral-900">Nhập dữ liệu</h2>
+        <button @click="showImportModal = false"
+          class="p-2 rounded-lg text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 transition-colors touch-target">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1">
+        <p class="text-sm text-neutral-600">Dán chuỗi mã hóa vào ô bên dưới để khôi phục dữ liệu thẻ.</p>
+
+        <textarea x-model="importString"
+          class="w-full h-32 sm:h-32 px-4 py-3 border border-neutral-300 rounded-lg text-sm font-mono focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-colors resize-none"
+          placeholder="Dán chuỗi mã hóa vào đây..."></textarea>
+
+        <button @click="importData()"
+          class="w-full py-3 bg-brand-600 text-white rounded-xl text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/25 touch-target">
+          Khôi phục
+        </button>
+
+        <div x-show="importResult" class="p-3 rounded-lg"
+          :class="importSuccess ? 'bg-brand-50 border border-brand-200' : 'bg-red-50 border border-red-200'">
+          <p class="text-sm font-medium" :class="importSuccess ? 'text-brand-800' : 'text-red-800'"
+            x-text="importResult"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CATEGORY MANAGER MODAL ==================== -->
+  <div x-show="showCategoryManager" x-cloak class="fixed inset-0 z-50 flex sm:items-center justify-center p-0 sm:p-4"
+    style="display: none;">
+    <div class="absolute inset-0 bg-black/40" @click="showCategoryManager = false"></div>
+
+    <div
+      class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl w-full h-[85vh] sm:h-[600px] sm:max-w-2xl overflow-hidden flex flex-col"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0 translate-y-full sm:scale-95"
+      x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-init="initCategoryManager()">
+
+      <div class="sm:hidden flex justify-center py-3 cursor-grab active:cursor-grabbing">
+        <div class="w-10 h-1 bg-neutral-300 rounded-full"></div>
+      </div>
+
+      <div class="flex items-center justify-between px-4 sm:p-6 pb-4 sm:pb-6 border-b border-neutral-200">
+        <h2 class="text-lg sm:text-xl font-bold text-neutral-900">Quản lý danh mục</h2>
+        <button @click="showCategoryManager = false"
+          class="p-2 rounded-lg text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 transition-colors touch-target">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex-1 flex overflow-hidden">
+        <!-- card list panel -->
+        <div class="w-1/3 border-r border-neutral-200 overflow-y-auto">
+          <template x-for="card in customCards" :key="card.id">
+            <button @click="selectedManagerCardId = card.id"
+              class="w-full px-4 py-3 text-left border-b border-neutral-100 transition-colors"
+              :class="selectedManagerCardId === card.id ? 'bg-brand-50 border-l-4 border-l-brand-600' : 'hover:bg-neutral-50'">
+              <div class="text-sm font-medium text-neutral-800" x-text="card.name"></div>
+              <div class="text-xs text-neutral-500" x-text="card.paymentDueDate ? 'Ngày ' + card.paymentDueDate : ''">
+              </div>
+            </button>
+          </template>
+          <div x-show="customCards.length === 0" class="p-4 text-center">
+            <p class="text-sm text-neutral-500">Chưa có thẻ nào</p>
+          </div>
+        </div>
+
+        <!-- Right: Category Editor -->
+        <div class="w-2/3 flex flex-col overflow-hidden">
+          <!-- Category Search -->
+          <div class="p-4 border-b border-neutral-200">
+            <input type="text" x-model="managerCategorySearch"
+              class="w-full px-3 py-2 border border-neutral-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none"
+              placeholder="Tìm danh mục...">
+          </div>
+
+          <!-- Category List (scrollable) -->
+          <div class="flex-1 overflow-y-auto">
+            <template x-for="cat in getFilteredCategories()" :key="cat">
+              <div class="flex items-center gap-2 px-4 py-2 border-b border-neutral-100 hover:bg-neutral-50">
+                <span class="flex-1 text-sm text-neutral-800" x-text="cat"></span>
+                <span x-show="getRateForCategoryByCard(selectedManagerCardId, cat)"
+                  class="text-xs text-brand-600 font-medium"
+                  x-text="getRateForCategoryByCard(selectedManagerCardId, cat) + '%'"></span>
+                <input type="number" step="0.1" placeholder=""
+                  class="w-16 px-2 py-1 text-sm border border-neutral-300 rounded text-center focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none"
+                  @change="addCategoryToCard(selectedManagerCardId, cat, $event.target.value)">
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== RATE EDITOR MODAL ==================== -->
+  <div x-show="editingRateCardId !== null" x-cloak
+    class="fixed inset-0 z-50 flex sm:items-center justify-center p-0 sm:p-4" style="display: none;">
+    <div class="absolute inset-0 bg-black/40" @click="closeRateEditor()"></div>
+
+    <div
+      class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl w-full h-[85vh] sm:h-auto sm:max-w-sm overflow-hidden flex flex-col"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0 translate-y-full sm:scale-95"
+      x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100">
+
+      <div class="sm:hidden flex justify-center py-3 cursor-grab active:cursor-grabbing">
+        <div class="w-10 h-1 bg-neutral-300 rounded-full"></div>
+      </div>
+
+      <div class="flex items-center justify-between px-4 sm:p-6 pb-4 sm:pb-6 border-b border-neutral-200">
+        <h2 class="text-lg sm:text-xl font-bold text-neutral-900">Sửa tỷ lệ</h2>
+        <button @click="closeRateEditor()"
+          class="p-2 rounded-lg text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 transition-colors touch-target">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1">
+        <p class="text-sm text-neutral-600">Chỉnh sửa tỷ lệ hoàn tiền cho <span class="font-medium"
+            x-text="editingRateCategory"></span></p>
+
+        <div>
+          <label class="block text-sm font-medium text-neutral-700 mb-1.5">Tỷ lệ</label>
+          <input type="number" x-model="editingRateValue" step="0.1"
+            class="w-full px-4 py-3 sm:py-2.5 border border-neutral-300 rounded-lg text-base sm:text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-colors"
+            placeholder="ví dụ: 10">
+        </div>
+
+        <div class="flex gap-3">
+          <button @click="deleteRate()"
+            class="flex-1 py-3 bg-neutral-100 text-neutral-700 rounded-xl text-base font-medium hover:bg-neutral-200 transition-colors touch-target">
+            Xóa
+          </button>
+          <button @click="saveRate()"
+            class="flex-1 py-3 bg-brand-600 text-white rounded-xl text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/25 touch-target">
+            Lưu
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== NOTE EDITOR MODAL ==================== -->
+  <div x-show="editingNoteCardId !== null" x-cloak
+    class="fixed inset-0 z-50 flex sm:items-center justify-center p-0 sm:p-4" style="display: none;">
+    <div class="absolute inset-0 bg-black/40" @click="closeNoteEditor()"></div>
+
+    <div
+      class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl w-full h-[85vh] sm:h-auto sm:max-w-md overflow-hidden flex flex-col"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0 translate-y-full sm:scale-95"
+      x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100">
+
+      <div class="sm:hidden flex justify-center py-3 cursor-grab active:cursor-grabbing">
+        <div class="w-10 h-1 bg-neutral-300 rounded-full"></div>
+      </div>
+
+      <div class="flex items-center justify-between px-4 sm:p-6 pb-4 sm:pb-6 border-b border-neutral-200">
+        <h2 class="text-lg sm:text-xl font-bold text-neutral-900">Ghi chú thẻ</h2>
+        <button @click="closeNoteEditor()"
+          class="p-2 rounded-lg text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 transition-colors touch-target">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1">
+        <p class="text-sm text-neutral-600">Thêm ghi chú cho thẻ để nhớ các thông tin quan trọng.</p>
+
+        <textarea x-model="editingNoteText"
+          class="w-full h-40 sm:h-32 px-4 py-3 border border-neutral-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-colors resize-none"
+          placeholder="Nhập ghi chú..."></textarea>
+
+        <div class="flex gap-3">
+          <button @click="deleteNote()"
+            class="flex-1 py-3 bg-neutral-100 text-neutral-700 rounded-xl text-base font-medium hover:bg-neutral-200 transition-colors touch-target">
+            Xóa
+          </button>
+          <button @click="saveNote()"
+            class="flex-1 py-3 bg-brand-600 text-white rounded-xl text-base font-semibold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-600/25 touch-target">
+            Lưu
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div x-show="toast.show" x-cloak
+    class="fixed bottom-6 right-6 z-[60] px-4 py-3 rounded-xl shadow-lg text-sm font-medium transition-colors"
+    :class="toast.type === 'success' ? 'bg-brand-600 text-white' : 'bg-red-600 text-white'"
+    x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4"
+    x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-4"
+    style="display: none;">
+    <span x-text="toast.message"></span>
+  </div>
+
+  <!-- App Logic -->
+  <script src="app.js"></script>
+</body>
+
+</html>

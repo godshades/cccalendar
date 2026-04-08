@@ -1,0 +1,483 @@
+/* ============================================================
+   CC Calendar — Custom Styles
+   Complements Tailwind utilities. Does NOT duplicate them.
+   ============================================================ */
+
+/* ---------- Alpine.js cloak (MUST be first) ---------- */
+[x-cloak] {
+  display: none !important;
+}
+
+/* ---------- Scroll Performance Optimizations ---------- */
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+  contain: layout style paint;
+}
+
+/* Card items in modal — isolate from repaints */
+.overflow-y-auto > .grid > div {
+  will-change: auto;
+  contain: layout style;
+}
+
+/* Modal backdrop — no GPU compositing needed */
+.bg-black\\/40 {
+  will-change: opacity;
+}
+
+/* ---------- CSS Custom Properties (Design Tokens) ---------- */
+:root {
+  /* Brand */
+  --brand-50: #f0fdf4;
+  --brand-100: #dcfce7;
+  --brand-200: #bbf7d0;
+  --brand-500: #22c55e;
+  --brand-600: #16a34a;
+  --brand-700: #15803d;
+  --brand-800: #166534;
+
+  /* Neutral */
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+
+  /* Semantic */
+  --red-50: #fef2f2;
+  --red-200: #fecaca;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --red-800: #991b1b;
+
+  /* Spacing scale (8px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* Shadows */
+  --shadow-focus: 0 0 0 3px rgba(22, 163, 74, 0.4);
+  --shadow-focus-red: 0 0 0 3px rgba(239, 68, 68, 0.4);
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --touch-min: 44px;
+  --nav-height: 4rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --text-lg: 1.25rem;
+    --text-xl: 1.5rem;
+    --text-2xl: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --text-xl: 1.75rem;
+  }
+}
+
+/* ============================================================
+   CALENDAR GRID
+   ============================================================ */
+
+/* Ensure 7-column grid cells have equal width */
+.grid.grid-cols-7 > div {
+  flex-basis: 0;
+  min-width: 0;
+}
+
+/* Day cell hover enhancement — subtle lift + accent border */
+.group:hover {
+  box-shadow: inset 0 0 0 1px var(--brand-200);
+}
+
+/* Left border accent on days with payments due (badge container present) */
+.min-h-\[100px\] > .mt-1:not(:empty) {
+  /* parent gets accent via JS class — handled below */
+}
+
+/* Days that have payment badges get a subtle left accent bar */
+.min-h-\[100px\]:has(> .mt-1 > div) {
+  border-left: 3px solid var(--brand-500);
+}
+
+/* Today highlight enhancement */
+.bg-brand-50\/50 {
+  box-shadow: inset 0 0 0 1px var(--brand-200);
+}
+
+/* ============================================================
+   CARD BADGES (Calendar day badges)
+   ============================================================ */
+
+/* Normal badge — already styled by Tailwind, enhance hover */
+.bg-brand-100.text-brand-800 {
+  border-left: 2px solid var(--brand-500);
+  transition: all var(--transition-base);
+}
+
+.bg-brand-100.text-brand-800:hover {
+  border-left-width: 3px;
+  transform: translateX(1px);
+}
+
+/* Max-reached badge — grey background, strikethrough */
+.bg-neutral-200.text-neutral-500 {
+  background-color: var(--neutral-200) !important;
+  color: var(--neutral-500) !important;
+  text-decoration: line-through;
+  border-left: 2px solid var(--neutral-400);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.bg-neutral-200.text-neutral-500:hover {
+  background-color: var(--neutral-300) !important;
+  border-left-color: var(--neutral-500);
+}
+
+/* "Đạt max" badge styling — red indicator */
+.max-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--red-500);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+/* ============================================================
+   MAX-CASHBACK VISUAL STATES (List view cards)
+   ============================================================ */
+
+/* Max-reached card container */
+.opacity-60 {
+  background-color: var(--neutral-50);
+}
+
+.opacity-60 .bg-gradient-to-r {
+  background: var(--neutral-100) !important;
+}
+
+/* Strikethrough text for max-reached card names */
+.line-through.text-neutral-500 {
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--neutral-400);
+}
+
+/* ============================================================
+   MODAL ENHANCEMENTS
+   ============================================================ */
+
+/* Modal backdrop — smooth blur transition */
+.fixed.inset-0.z-50 > .absolute.inset-0 {
+  transition: backdrop-filter var(--transition-slow), background-color var(--transition-slow);
+}
+
+/* Modal content — centered, scrollable */
+.relative.bg-white.rounded-2xl {
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+/* Modal scrollable content areas — custom scrollbar */
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: var(--neutral-300) transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: var(--neutral-300);
+  border-radius: 999px;
+  transition: background-color var(--transition-fast);
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background-color: var(--neutral-400);
+}
+
+/* Close button hover enhancement */
+button:has(svg[stroke="currentColor"][viewBox="0 0 24 24"]) {
+  transition: all var(--transition-fast);
+}
+
+/* Modal enter animation fallback (Alpine handles most, this is safety) */
+[x-transition\:enter] {
+  will-change: transform, opacity;
+}
+
+/* ============================================================
+   CARD LIST ITEMS
+   ============================================================ */
+
+/* Card container — already has Tailwind classes, enhance depth */
+.bg-white.rounded-xl.border {
+  transition: all var(--transition-base);
+}
+
+.bg-white.rounded-xl.border:hover {
+  transform: translateY(-2px);
+}
+
+/* Cashback category tags — colored backgrounds */
+/* Applied via Alpine dynamic classes; style the rows */
+.space-y-1\.5 > div,
+.space-y-3 > .flex {
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.space-y-1\.5 > div:hover,
+.space-y-3 > .flex:hover {
+  background-color: var(--neutral-50);
+}
+
+/* Bank name styling */
+.text-sm.text-neutral-500 {
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   TOAST SLIDE-IN ANIMATION
+   ============================================================ */
+
+/* Toast — enhanced slide-in from bottom-right */
+.fixed.bottom-6.right-6.z-\[60\] {
+  animation: toast-slide-in 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================================
+   FOCUS STATES (Accessibility)
+   ============================================================ */
+
+/* Buttons — focus ring */
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* Danger buttons (delete) */
+button[title="Xóa thẻ"]:focus-visible,
+button[title="Xóa"]:focus-visible {
+  box-shadow: var(--shadow-focus-red);
+}
+
+/* Inputs — focus ring enhancement */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* Tab buttons */
+.border-b-2:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+/* Mobile: < 640px */
+@media (max-width: 639px) {
+  button, 
+  [role="button"] {
+    min-height: var(--touch-min);
+    min-width: var(--touch-min);
+  }
+  
+  .touch-target {
+    min-height: var(--touch-min);
+    min-width: var(--touch-min);
+  }
+  
+  .touch-target-pad {
+    padding: 0.625rem 0.75rem;
+  }
+  
+  .min-h-\[50px\] {
+    min-height: 50px !important;
+  }
+  
+  .min-h-\[50px\] > span {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    font-size: 0.65rem !important;
+  }
+
+  .min-h-\[50px\] .text-\[9px\] {
+    font-size: 0.5rem !important;
+    padding: 0.1rem 0.25rem !important;
+  }
+
+  .grid.grid-cols-7 > div {
+    font-size: 0.55rem !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  .text-xl {
+    font-size: 1rem !important;
+  }
+
+  .text-lg {
+    font-size: 0.875rem !important;
+  }
+
+  .text-base {
+    font-size: 0.875rem !important;
+  }
+
+  .grid.gap-4 {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .rounded-2xl {
+    border-radius: 0.75rem !important;
+  }
+
+  .fixed.bottom-6.right-6.z-\[60\] {
+    left: 0.5rem !important;
+    right: 0.5rem !important;
+    bottom: 0.5rem !important;
+    text-align: center;
+  }
+}
+
+/* Tablet: 640px – 1023px */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .grid.gap-4.sm\:grid-cols-2 {
+    gap: 0.75rem;
+  }
+
+  .min-h-\[80px\] {
+    min-height: 80px;
+  }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+  .grid.gap-4.sm\:grid-cols-2.lg\:grid-cols-3 {
+    gap: 1.25rem;
+  }
+
+  .min-h-\[100px\] {
+    min-height: 100px;
+  }
+}
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
+
+@media print {
+  nav,
+  button,
+  .fixed {
+    display: none !important;
+  }
+
+  .grid.grid-cols-7 > div {
+    border: 1px solid var(--neutral-300) !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* ============================================================
+   MATRIX VIEW
+   ============================================================ */
+
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--neutral-300) transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  height: 6px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background-color: var(--neutral-300);
+  border-radius: 999px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background-color: var(--neutral-400);
+}
+
+.sticky.left-0 {
+  box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.1);
+}
+
+table thead th,
+table tbody td {
+  white-space: nowrap;
+}
+
+table tbody tr:hover {
+  background-color: var(--neutral-50);
+}
+
+@media (max-width: 639px) {
+  .overflow-x-auto {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}

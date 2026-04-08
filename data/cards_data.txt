@@ -1,0 +1,303 @@
+	Thể loại	Phần trăm	Max mỗi tháng
+Cake Freedom	Online Tiki, Shopee - 5262	20	200,000 ₫
+	Du lịch - voucher traveloka	20	200,000 ₫
+	Thời trang - 5611- ít chỗ hoàn, check mcc4u	20	200,000 ₫
+	Chọn 2: Siêu thị, ăn uống, di chuyển, CHTL, bảo hiểm, Khách sạn, ví điện tử, hàng không, rạp chiếu phim	20	200,000 ₫
+		20	200,000 ₫
+VIB Super Card	POS nước ngoài	15	1,000,000 ₫
+	Du lịch	10	
+	Mua sắm	10	
+	Ăn uống	10	
+	Online - không áp dụng MCC 6300 và 7399	5	
+VIB Online Plus 2in1	Online nước ngoài	5	600,000 ₫
+	Online trong nước	3	
+	Khác	0.1	
+VIB Family Link	Giáo dục, Bảo Hiểm, Y Tế	5	1,000,000 ₫
+	Giáo dục, Bảo Hiểm, Y Tế	8	
+	Giáo dục, Bảo Hiểm, Y Tế	10	
+	Khác	0.1	
+VIB Travel Élite	POS tại nước ngoài	1 / 20000đ	k giới hạn
+"VIB Cashback
+"	Khác	0.1	k giới hạn
+	Ăn uống	5-10	800-2tr
+	Giải trí		
+	Ads		
+"VIB Rewards Unlimited
+"	POS Trung tâm mua sắm và Cửa hàng miễn thuế	1	k giới hạn
+	POS Siêu thị	0.5	
+	Khác	0.1	
+Eximbank Priority Signature	POS nước ngoài	10	1,000,000 ₫
+	Ăn uống	5	
+	Du lịch, khách sạn	3	
+Eximbank One World	POS nước ngoài	10	1,000,000 ₫
+	Ăn uống	5	
+	Du lịch, khách sạn	3	
+Eximbank Ultimate	Nhật Bản	10	1,000,000 ₫
+	Khác	0.3	
+Eximbank Cash Back	Bảo hiểm	3	1,000,000 ₫
+	Y tế, Giáo dục	8	
+	Di chuyển, Ăn uống	5	
+	Khác	0.3	
+Eximbank Violet	Online	5	300,000 ₫
+VPBank Lady MasterCard	Bảo hiểm trực tuyến	15	300,000 ₫
+	Giáo dục	15	200,000 ₫
+	Chăm sóc sắc đẹp/ Y tế/ Thời trang	15	300,000 ₫
+	Siêu thị	5	200,000 ₫
+	Bảo hiểm trực tuyến	7.5	150,000 ₫
+	Giáo dục	7.5	100,000 ₫
+	Chăm sóc sắc đẹp/ Y tế/ Thời trang	7.5	150,000 ₫
+	Siêu thị	2.5	100,000 ₫
+VPBank StepUp	Online - trừ shopee, BH	15	700,000 ₫
+	Ăn uống	4	200,000 ₫
+	Online - trừ shopee, BH	6	300,000 ₫
+	Ăn uống	2	100,000 ₫
+VPBank Z JCB	Ăn uống	10	200,000 ₫
+	Giải trí, Fitness	10	200,000 ₫
+	Gọi xe, Đặt đồ ăn	10	100,000 ₫
+VPBank Flex Credit	Ăn uống	15	1,000,000 ₫
+	Du lịch	15	1,000,000 ₫
+	Thể thao	15	1,000,000 ₫
+	Thời trang, mỹ phẩm, nước hoa	15	1,000,000 ₫
+VPBank Diamond World	Ăn uống	10	1,000,000 ₫
+	Thời trang	10	
+	Siêu thị	5	
+	Golf	1	
+	Khác	0.3	k giới hạn
+	Ăn uống	5	500,000 ₫
+	Thời trang	5	
+	Siêu thị	3	
+	Golf	0.5	
+VPBank FreeWays	Nước ngoài	4	500,000 ₫
+	Du lịch, Ăn uống	3	500,000 ₫
+VPBank  S Rewards	Shopee, Shopee food	12	400,000 ₫
+	Ăn uống, Siêu thị, Di chuyển	4	200,000 ₫
+	Khác	0.1	K giới hạn
+VPBank  GameON	game, mua vé xem phim, vé ca nhạc, thanh toán phí hội viên	https://www.vpbank.com.vn/-/media/vpbank-latest/1retail/cards/credit-cards/The-le-Uu-dai-dai-han-danh-cho-chu-the-tin-dung-VPBank-GameON-Mastercard-website.pdf	
+	phụ kiện tại cửa hàng điện tử		
+	"ăn uống và các giao dịch không tiếp 
+xúc qua ví "		
+VPBank Super Shopee Platinum	Shopee, Shopee food	10	400,000 ₫
+	Ăn uống, Siêu thị, Di chuyển	2	200,000 ₫
+	Khác	0.1	K giới hạn
+VPBank Shopee Platinum	Shopee, Shopee food	6	250,000 ₫
+	Ăn uống, Siêu thị, Di chuyển	1	150,000 ₫
+	Khác	0.1	K giới hạn
+MSB Visa Signature	Ăn uống, 	10	1,000,000 ₫
+	Giáo dục	10	
+	Y tế, Bảo hiểm	10	
+	Khác	0.1	
+MSB Super Free	Siêu thị	1	300,000 ₫
+	Khác	0.1	
+MSB mDigi	Ăn uống	20	300,000 ₫
+	Du lịch	20	
+	Sản phẩm số (sách, nhạc, game…)	20	
+MSB Online	Vé xem phim online	10	300,000 ₫
+	Online trang TMĐT: S, L, Tiktok	10	
+MSB Family	Gym, Yoga, Fitness	"30tr - 30
+10-30tr - 20
+< 10 - 10"	"30tr - 900k
+10-30tr - 700k
+< 10 - 500k"
+	Giáo dục, hiệu sách		
+	Khóa học kỹ năng, nghệ thuật, triển lãm, bảo tàng		
+	Siêu thị	5	
+Vietin Eliv3 Credit - RIP	Du lịch	10	300,000 ₫
+	Giải trí	10	
+	Y tế	10	300,000 ₫
+	Giáo dục	10	
+	Online	2	200,000 ₫
+	Siêu thị	2	200,000 ₫
+	Du lịch	15	500,000 ₫
+	Giải trí	15	
+	Y tế	15	500,000 ₫
+	Giáo dục	15	
+	Online	5	300,000 ₫
+	Siêu thị	5	300,000 ₫
+Thẻ OCB			
+TPBank EVO	Online	10	500,000 ₫
+	Online	5	
+	Online	1	
+BIDV JCB Ultimate	ăn uống tháng SN	20	500,000 ₫
+	ăn uống tháng khác	10	
+	ăn uống POS tại Nhật	15	800,000 ₫
+	Khác	0.15	
+	Phí gd tại Nhật	1	
+BIDV Cashback 360	Siêu thị	10	300,000 ₫
+	Siêu thị	2	
+	Siêu thị	0.5	
+	Y tế	2	600,000 ₫
+	Giáo dục	2	
+	Ngoại tệ	1	
+BIDV Cashback Online	Online tiki shopee lazada	6	600,000 ₫
+	Online khác	3	
+	Ngoại tệ	2	
+	Khác	0.3	
+BIDV Well-being	Y tế	10	500,000 ₫
+	Bảo hiểm, thời trang	6	
+	Y tế	5	200,000 ₫
+	Bảo hiểm, thời trang	3	
+Sacombank JCB Ultimate	Ăn uống, cà phê nước ngoài	15	700,000 ₫
+	Ăn uống, cà phê trong nước	10	
+	Khác	0.5	
+Sacombank Cashback	Online	5	600,000 ₫
+	Pos nước ngoài	3	
+	Khác	0.5	
+Sacombank O₂ 	Decathlon, XanhSM, Vinamilk	10	300,000 ₫
+Sacombank Uniq	Siêu thị	20	300,000 ₫
+	Di chuyển		
+	Khác	0.5	300,000 ₫
+Sacombank American Express	Máy bay, khách sạn, đại lý du lịch	20	1,000,000 ₫
+	POS nước ngoài	10	
+	Online nước ngoài	5	
+	Khác	0.5	
+KBank	Thái Lan	15	1,000,000 ₫
+	Du lịch (Khách sạn, thuê xe, hàng không)	10	
+	Siêu thị và tạp hóa	10	
+	Nhà hàng	10	
+	Giải trí & Đăng ký theo dõi 	10	
+	Sức khỏe & Làm đẹp	10	
+	Online/Thương mại điện tử 	10	
+Woori Classic	Online TMĐT	5	300,000 ₫
+	Máy bay, khách sạn, agoda, trip .com	5	300,000 ₫
+Woori Gold	Online TMĐT	8	300,000 ₫
+	Máy bay, khách sạn, agoda, trip .com	5	300,000 ₫
+	Ăn uống	10	300,000 ₫
+	Siêu thị, CHTL	5	300,000 ₫
+Woori Platinum	Y tế, bảo hiểm, giáo dục	10	300,000 ₫
+	Máy bay, khách sạn, agoda, trip .com	5	300,000 ₫
+	Ăn uống	10	300,000 ₫
+	Siêu thị, CHTL	5	300,000 ₫
+Woori VV Premium	Golf	10	500,000 ₫
+	Làm đẹp		
+	Ăn uống offline		
+	Khách sạn		
+LPBank Signature	Du lịch, khách sạn, vé	2	∞
+	Khác	1.3	
+LP JCB ULTIMATE	Y tế, giáo dục, bảo hiểm	15	800,000 ₫
+	Nghỉ dưỡng/ăn uống/Spa	10	
+	Khác	0.5	
+MB HI Cashback Credit - RIP	Ăn uống, cà phê, giáo dục	1	500,000 ₫
+	Ăn uống, cà phê, du lịch, khách sạn	1	
+	Ăn uống, cà phê, bảo hiểm	1	
+	Online, bảo hiểm	1	
+	Ăn uống, cà phê, giáo dục	1	1,000,000 ₫
+	Ăn uống, cà phê, du lịch, khách sạn	1	
+	Ăn uống, cà phê, bảo hiểm	1	
+	Online, bảo hiểm	1	
+Sea Signature	Y tế: Thuốc, Tá dược	10	2,000,000 ₫
+	Spa/Massage	5	
+	Khách sạn/Nhà nghỉ/Khu nghỉ mát	3	
+	Ăn uống	1	
+SeA Easy	Online TMĐT	8	600,000 ₫
+	Online khác	0.3	
+SeA Platinum	POS nước ngoài	3	3,000,000 ₫
+	Khác	0.3	∞
+TCB Signature	Nhà hàng	5	3,000,000 ₫
+	Du lịch, khách sạn	3	
+TCB Everyday	Online nước ngoài	8	500,000 ₫
+	Online trong nước	5	
+TCB Spark	Du lịch	8	500,000 ₫
+	Thời trang	8	
+	Giải trí	8	
+	Online	2	
+	Nhà hàng	2	
+	Khác	0.1	
+TCB Eco	Bảo hiểm, Giáo dục	3	800,000 ₫
+TCB Style	Online nước ngoài	8	500,000 ₫
+	Online trong nước	3	
+	Nhà hàng	1	
+	Khác	0.1	
+UOB One	Di Chuyển	10	600,000 ₫
+	Dịch vụ định kỳ	5	
+	Bảo hiểm	3	
+	Mua sắm TTTM, Thời trang	2	
+	Khác	0.3	
+HSBC Cash Back	Siêu thị	6	200,000 ₫
+	Y tế	1	∞
+	Giáo dục	1	
+	Khác	0.3	
+HSBC Live+	Ẩm thực	6	200,000 ₫
+	Mua sắm 	6	200,000 ₫
+	Giải trí	1	∞
+	Khác	0.3	
+Shinhan 365	Siêu thị (POS)	10	400,000 ₫
+	POS nước ngoài	3	200,000 ₫
+"Shinhan Hi-Point
+Platinum
+Gold
+Classic"	Store: Samsung, nguyenkim	5	400,000 ₫
+	Online: Shopee		
+	Di chuyển: Grab		
+	Du lịch: VNA, agoda		
+	Ăn uống: tourlesjour, paris baguette		
+SHB Cashback	Siêu thị,Bảo hiểm, Thời trang	5	300,000 ₫
+	Giáo dục, Y tế		500,000 ₫
+	Siêu thị,Bảo hiểm, Thời trang	10	600,000 ₫
+	Giáo dục, Y tế		1,000,000 ₫
+Nam Á Happy Digital	Online nước ngoài	10	500,000 ₫
+	Online trong nước	2	
+Nam Á Happy Lady	Siêu thị, CHTL	20	300,000 ₫
+	Nhà hàng		400,000 ₫
+	Du lịch		500,000 ₫
+HDBank JCB Ultimate	chi tiêu tại Nhật Bản	20	500,000 ₫
+	du lịch, khách sạn, resort	15	300,000 ₫
+	nước ngoài	6	200,000 ₫
+	POS trong nước	4	200,000 ₫
+	chi tiêu tại Nhật Bản	10	250,000 ₫
+	du lịch, khách sạn, resort	5	150,000 ₫
+	nước ngoài	3	100,000 ₫
+	POS trong nước	2	100,000 ₫
+HDBank Gold	Online	10	400,000 ₫
+	Ăn uống - 5812 + 5813	8	200,000 ₫
+	Online	6	200,000 ₫
+	Ăn uống - 5812 + 5813	4	100,000 ₫
+HDBANK Priority  SIGNATURE	Trung tâm TM, Thời trang	15	500,000 ₫
+	Khác	0.5	500,000 ₫
+HDBank Vietjet Platinum	vé máy bay Vietjet	10	500,000 ₫
+	Du lịch, ẩm thực	10	300,000 ₫
+VCB Platinum	Siêu thị nhà hàng	5	600,000 ₫
+	Khác	0.2	
+VCB Cashback Platinum	Nước ngoài	1.5	∞
+	Khác	0.5	2,000,000 ₫
+VCB World	Ăn uống, du lịch nước ngoài	5	800,000 ₫
+	Khác	0.5	
+VCB Signature	Y tế, giáo dục	10	300,000 ₫
+	Khác	0.5	∞
+PVcomBank Shopping	siêu thị, cửa hàng tiện lợi	1	600,000 ₫
+	Online	3	
+PVcomBank Cashback	Y tế, giáo dục	3	600,000 ₫
+	Khác	1	
+PVcomBank Travel	Du lịch	1	600,000 ₫
+	Ăn uống T7, CN	8	
+BVBank inStyle	Bảo hiểm	20	1,000,000 ₫
+	Siêu thị	10	500,000 ₫
+	Bảo hiểm	10	600,000 ₫
+	Siêu thị	10	
+	Bảo hiểm	5	300,000 ₫
+	Siêu thị	5	
+BVBank Lifestyle	Netflix/ Vieon/ ChatGPT	50	50,000 ₫
+	Giải trí (Entertainment)	20	600,000 ₫
+	Du lịch	15	
+	Thời trang, Mua sắm	10	
+	Ăn uống	10	
+BVBank Sense	Thời trang, Mua sắm	20	1,500,000 ₫
+	Ăn uống	20	
+	Thời trang, Mua sắm	10	600,000 ₫
+	Ăn uống	10	
+	Thời trang, Mua sắm	5	300,000 ₫
+	Ăn uống	5	
+	Uniqlo		50,000 ₫
+BVBank Ms.	Online Lazada, Shopee, Tiki	10	600,000 ₫
+	Online khác	2	
+	Shopee, Tiktok Shop, Lazada	5	300,000 ₫
+	Online khác	1	
+BVBank Ms.	Online Lazada, Shopee, Tiki	10	300,000 ₫
+	Grab, Be, Mỹ phẩm 5977	5	
+BVBank shopON	Online	5	200,000 ₫
+MB JCB ULTIMATE	Y tế, giáo dục, bảo hiểm	10	800,000 ₫
+ACB Platinum	Ăn uống	5	100,000 ₫
+	Mua sắm online (xem MCC)		100,000 ₫
+	Ví trên phone (Apple/gg/ss/garmin)		100,000 ₫
+ACB Signature	Ăn uống	5	500,000 ₫
+	Du lịch, vé máy bay, khách sạn		
+	Khác	1	
