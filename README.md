@@ -38,3 +38,6 @@ CC Calendar là một ứng dụng web giúp bạn theo dõi ngày đến hạn 
 ## 📄 Giấy phép
 
 Dự án này được phát triển cho mục đích cá nhân. Vui lòng kiểm tra thông tin ngân hàng và thẻ của bạn một cách cẩn thận.
+
+---
+*Phát triển bởi [godshades](https://github.com/godshades)*
