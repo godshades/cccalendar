@@ -257,6 +257,19 @@ function ccCalendar() {
       this.isCustomCard = false;
       this.selectedCardName = cardName;
       this.cardSearchQuery = cardName;
+
+      var cardData = this.allCardsData.find(function (c) { return c.name === cardName; });
+      if (cardData && cardData.cashbackCategories && cardData.cashbackCategories.length > 0) {
+        var defaultMax = cardData.cashbackCategories[0].maxCashback;
+        if (defaultMax && defaultMax !== 'unlimited' && defaultMax !== '∞') {
+          this.selectedMaxCashback = this.formatNumberWithCommas(defaultMax);
+        } else {
+          this.selectedMaxCashback = '';
+        }
+      } else {
+        this.selectedMaxCashback = '';
+      }
+
       setTimeout(function () {
         self.showDropdown = false;
       }, 100);

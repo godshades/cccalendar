@@ -1526,13 +1526,13 @@
         },
         {
           "category": "Uniqlo",
-          "rate": "50,000 ₫",
+          "rate": "50000",
           "maxCashback": ""
         }
       ]
     },
     {
-      "name": "BVBank Ms.",
+      "name": "BVBank Ms. VISA",
       "cashbackCategories": [
         {
           "category": "Online Lazada, Shopee, Tiki",
@@ -1557,7 +1557,7 @@
       ]
     },
     {
-      "name": "BVBank Ms.",
+      "name": "BVBank Ms. JCB",
       "cashbackCategories": [
         {
           "category": "Online Lazada, Shopee, Tiki",
@@ -1626,6 +1626,36 @@
         },
         {
           "category": "Khác",
+          "rate": "1%",
+          "maxCashback": ""
+        }
+      ]
+    },
+    {
+      "name": "VCB DigiCard",
+      "cashbackCategories": [
+        {
+          "category": "Online",
+          "rate": "5%",
+          "maxCashback": ""
+        },
+        {
+          "category": "Khác",
+          "rate": "0.2%",
+          "maxCashback": ""
+        }
+      ]
+    },
+    {
+      "name": "VP Prime Platinum",
+      "cashbackCategories": [
+        {
+          "category": "Contactless",
+          "rate": "3%",
+          "maxCashback": "400000"
+        },
+        {
+          "category": "Online",
           "rate": "1%",
           "maxCashback": ""
         }
