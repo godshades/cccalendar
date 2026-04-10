@@ -284,6 +284,11 @@ function ccCalendar() {
     selectFirstMatch: function () {
       if (this.filteredCards.length > 0) {
         this.selectCardFromDropdown(this.filteredCards[0]);
+      } else if (this.cardSearchQuery.trim()) {
+        this.isCustomCard = true;
+        this.customCardName = this.cardSearchQuery.trim();
+        this.selectedCardName = '';
+        this.showDropdown = false;
       }
     },
 
@@ -301,6 +306,11 @@ function ccCalendar() {
     },
 
     addSelectedCard: function () {
+      // Auto-trigger custom card if user typed something but didn't select from dropdown
+      if (!this.isCustomCard && this.cardSearchQuery.trim() && !this.selectedCardName) {
+        this.isCustomCard = true;
+        this.customCardName = this.cardSearchQuery.trim();
+      }
       var cardNameToAdd = this.isCustomCard ? this.customCardName : this.selectedCardName;
       if (!cardNameToAdd || !cardNameToAdd.trim()) {
         if (this.isCustomCard) {
