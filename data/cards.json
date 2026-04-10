@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-07",
+  "lastUpdated": "2026-04-09",
   "cards": [
     {
       "name": "Cake Freedom",
@@ -97,21 +97,36 @@
       ]
     },
     {
+      "name": "VIB Travel Élite",
+      "cashbackCategories": [
+        {
+          "category": "POS tại nước ngoài",
+          "rate": "1 / 20000đ",
+          "maxCashback": "unlimited"
+        }
+      ]
+    },
+    {
       "name": "VIB Cashback",
       "cashbackCategories": [
         {
+          "category": "Khác",
+          "rate": "0.1%",
+          "maxCashback": "unlimited"
+        },
+        {
           "category": "Ăn uống",
           "rate": "5-10%",
-          "maxCashback": "800-2tr"
+          "maxCashback": "8002"
         },
         {
           "category": "Giải trí",
-          "rate": "5-10%",
+          "rate": "",
           "maxCashback": ""
         },
         {
           "category": "Ads",
-          "rate": "5-10%",
+          "rate": "",
           "maxCashback": ""
         }
       ]
@@ -347,7 +362,7 @@
         {
           "category": "Khác",
           "rate": "0.3%",
-          "maxCashback": "kgiớihạn"
+          "maxCashback": "unlimited"
         },
         {
           "category": "Ăn uống",
@@ -402,7 +417,7 @@
         {
           "category": "Khác",
           "rate": "0.1%",
-          "maxCashback": "Kgiớihạn"
+          "maxCashback": "unlimited"
         }
       ]
     },
@@ -422,7 +437,7 @@
         {
           "category": "Khác",
           "rate": "0.1%",
-          "maxCashback": "Kgiớihạn"
+          "maxCashback": "unlimited"
         }
       ]
     },
@@ -442,7 +457,7 @@
         {
           "category": "Khác",
           "rate": "0.1%",
-          "maxCashback": "Kgiớihạn"
+          "maxCashback": "unlimited"
         }
       ]
     },
@@ -518,76 +533,31 @@
           "category": "Online trang TMĐT: S, L, Tiktok",
           "rate": "10%",
           "maxCashback": ""
-        },
-        {
-          "category": "Siêu thị",
-          "rate": "5%",
-          "maxCashback": ""
         }
       ]
     },
     {
-      "name": "Vietin Eliv3 Credit - RIP",
+      "name": "MSB Family",
       "cashbackCategories": [
         {
-          "category": "Du lịch",
-          "rate": "10%",
-          "maxCashback": "300000"
-        },
-        {
-          "category": "Giải trí",
-          "rate": "10%",
+          "category": "Gym, Yoga, Fitness",
+          "rate": "",
           "maxCashback": ""
         },
         {
-          "category": "Y tế",
-          "rate": "10%",
-          "maxCashback": "300000"
-        },
-        {
-          "category": "Giáo dục",
-          "rate": "10%",
+          "category": "Giáo dục, hiệu sách",
+          "rate": "",
           "maxCashback": ""
         },
         {
-          "category": "Online",
-          "rate": "2%",
-          "maxCashback": "200000"
-        },
-        {
-          "category": "Siêu thị",
-          "rate": "2%",
-          "maxCashback": "200000"
-        },
-        {
-          "category": "Du lịch",
-          "rate": "15%",
-          "maxCashback": "500000"
-        },
-        {
-          "category": "Giải trí",
-          "rate": "15%",
+          "category": "Khóa học kỹ năng, nghệ thuật, triển lãm, bảo tàng",
+          "rate": "",
           "maxCashback": ""
-        },
-        {
-          "category": "Y tế",
-          "rate": "15%",
-          "maxCashback": "500000"
-        },
-        {
-          "category": "Giáo dục",
-          "rate": "15%",
-          "maxCashback": ""
-        },
-        {
-          "category": "Online",
-          "rate": "5%",
-          "maxCashback": "300000"
         },
         {
           "category": "Siêu thị",
           "rate": "5%",
-          "maxCashback": "300000"
+          "maxCashback": ""
         }
       ]
     },
@@ -785,6 +755,11 @@
           "maxCashback": "300000"
         },
         {
+          "category": "Di chuyển",
+          "rate": "20%",
+          "maxCashback": ""
+        },
+        {
           "category": "Khác",
           "rate": "0.5%",
           "maxCashback": "300000"
@@ -812,46 +787,6 @@
         {
           "category": "Khác",
           "rate": "0.5%",
-          "maxCashback": ""
-        }
-      ]
-    },
-    {
-      "name": "KBank",
-      "cashbackCategories": [
-        {
-          "category": "Thái Lan",
-          "rate": "15%",
-          "maxCashback": "1000000"
-        },
-        {
-          "category": "Du lịch (Khách sạn, thuê xe, hàng không)",
-          "rate": "10%",
-          "maxCashback": ""
-        },
-        {
-          "category": "Siêu thị và tạp hóa",
-          "rate": "10%",
-          "maxCashback": ""
-        },
-        {
-          "category": "Nhà hàng",
-          "rate": "10%",
-          "maxCashback": ""
-        },
-        {
-          "category": "Giải trí & Đăng ký theo dõi",
-          "rate": "10%",
-          "maxCashback": ""
-        },
-        {
-          "category": "Sức khỏe & Làm đẹp",
-          "rate": "10%",
-          "maxCashback": ""
-        },
-        {
-          "category": "Online/Thương mại điện tử",
-          "rate": "10%",
           "maxCashback": ""
         }
       ]
@@ -928,6 +863,21 @@
           "category": "Golf",
           "rate": "10%",
           "maxCashback": "500000"
+        },
+        {
+          "category": "Làm đẹp",
+          "rate": "",
+          "maxCashback": ""
+        },
+        {
+          "category": "Ăn uống offline",
+          "rate": "",
+          "maxCashback": ""
+        },
+        {
+          "category": "Khách sạn",
+          "rate": "",
+          "maxCashback": ""
         }
       ]
     },
@@ -937,7 +887,7 @@
         {
           "category": "Du lịch, khách sạn, vé",
           "rate": "2%",
-          "maxCashback": ""
+          "maxCashback": "∞"
         },
         {
           "category": "Khác",
@@ -962,51 +912,6 @@
         {
           "category": "Khác",
           "rate": "0.5%",
-          "maxCashback": ""
-        }
-      ]
-    },
-    {
-      "name": "MB HI Cashback Credit - RIP",
-      "cashbackCategories": [
-        {
-          "category": "Ăn uống, cà phê, giáo dục",
-          "rate": "1%",
-          "maxCashback": "500000"
-        },
-        {
-          "category": "Ăn uống, cà phê, du lịch, khách sạn",
-          "rate": "1%",
-          "maxCashback": ""
-        },
-        {
-          "category": "Ăn uống, cà phê, bảo hiểm",
-          "rate": "1%",
-          "maxCashback": ""
-        },
-        {
-          "category": "Online, bảo hiểm",
-          "rate": "1%",
-          "maxCashback": ""
-        },
-        {
-          "category": "Ăn uống, cà phê, giáo dục",
-          "rate": "1%",
-          "maxCashback": "1000000"
-        },
-        {
-          "category": "Ăn uống, cà phê, du lịch, khách sạn",
-          "rate": "1%",
-          "maxCashback": ""
-        },
-        {
-          "category": "Ăn uống, cà phê, bảo hiểm",
-          "rate": "1%",
-          "maxCashback": ""
-        },
-        {
-          "category": "Online, bảo hiểm",
-          "rate": "1%",
           "maxCashback": ""
         }
       ]
@@ -1062,7 +967,7 @@
         {
           "category": "Khác",
           "rate": "0.3%",
-          "maxCashback": ""
+          "maxCashback": "∞"
         }
       ]
     },
@@ -1207,7 +1112,7 @@
         {
           "category": "Y tế",
           "rate": "1%",
-          "maxCashback": ""
+          "maxCashback": "∞"
         },
         {
           "category": "Giáo dục",
@@ -1225,7 +1130,7 @@
       "name": "HSBC Live+",
       "cashbackCategories": [
         {
-          "category": "Ăn uống",
+          "category": "Ẩm thực",
           "rate": "6%",
           "maxCashback": "200000"
         },
@@ -1237,7 +1142,7 @@
         {
           "category": "Giải trí",
           "rate": "1%",
-          "maxCashback": ""
+          "maxCashback": "∞"
         },
         {
           "category": "Khác",
@@ -1262,12 +1167,32 @@
       ]
     },
     {
-      "name": "Classic",
+      "name": "Shinhan Hi-Point",
       "cashbackCategories": [
         {
           "category": "Store: Samsung, nguyenkim",
           "rate": "5%",
           "maxCashback": "400000"
+        },
+        {
+          "category": "Online: Shopee",
+          "rate": "",
+          "maxCashback": ""
+        },
+        {
+          "category": "Di chuyển: Grab",
+          "rate": "",
+          "maxCashback": ""
+        },
+        {
+          "category": "Du lịch: VNA, agoda",
+          "rate": "",
+          "maxCashback": ""
+        },
+        {
+          "category": "Ăn uống: tourlesjour, paris baguette",
+          "rate": "",
+          "maxCashback": ""
         }
       ]
     },
@@ -1280,34 +1205,19 @@
           "maxCashback": "300000"
         },
         {
+          "category": "Giáo dục, Y tế",
+          "rate": "500,000 ₫",
+          "maxCashback": ""
+        },
+        {
           "category": "Siêu thị,Bảo hiểm, Thời trang",
           "rate": "10%",
           "maxCashback": "600000"
-        }
-      ]
-    },
-    {
-      "name": "Nam Á Happy Digital",
-      "cashbackCategories": [
-        {
-          "category": "Online nước ngoài",
-          "rate": "10%",
-          "maxCashback": "500000"
         },
         {
-          "category": "Online trong nước",
-          "rate": "2%",
+          "category": "Giáo dục, Y tế",
+          "rate": "1,000,000 ₫",
           "maxCashback": ""
-        }
-      ]
-    },
-    {
-      "name": "Nam Á Happy Lady",
-      "cashbackCategories": [
-        {
-          "category": "Siêu thị, CHTL",
-          "rate": "20%",
-          "maxCashback": "300000"
         }
       ]
     },
@@ -1405,7 +1315,7 @@
           "maxCashback": "500000"
         },
         {
-          "category": "Du lịch, Ăn uống",
+          "category": "Du lịch, ẩm thực",
           "rate": "10%",
           "maxCashback": "300000"
         }
@@ -1415,7 +1325,7 @@
       "name": "VCB Platinum",
       "cashbackCategories": [
         {
-          "category": "Siêu thị, nhà hàng",
+          "category": "Siêu thị nhà hàng",
           "rate": "5%",
           "maxCashback": "600000"
         },
@@ -1432,7 +1342,7 @@
         {
           "category": "Nước ngoài",
           "rate": "1.5%",
-          "maxCashback": ""
+          "maxCashback": "∞"
         },
         {
           "category": "Khác",
@@ -1467,7 +1377,7 @@
         {
           "category": "Khác",
           "rate": "0.5%",
-          "maxCashback": ""
+          "maxCashback": "∞"
         }
       ]
     },
@@ -1613,6 +1523,11 @@
           "category": "Ăn uống",
           "rate": "5%",
           "maxCashback": ""
+        },
+        {
+          "category": "Uniqlo",
+          "rate": "50,000 ₫",
+          "maxCashback": ""
         }
       ]
     },
@@ -1683,6 +1598,16 @@
           "category": "Ăn uống",
           "rate": "5%",
           "maxCashback": "100000"
+        },
+        {
+          "category": "Mua sắm online (xem MCC)",
+          "rate": "100,000 ₫",
+          "maxCashback": ""
+        },
+        {
+          "category": "Ví trên phone (Apple/gg/ss/garmin)",
+          "rate": "100,000 ₫",
+          "maxCashback": ""
         }
       ]
     },
@@ -1693,6 +1618,11 @@
           "category": "Ăn uống",
           "rate": "5%",
           "maxCashback": "500000"
+        },
+        {
+          "category": "Du lịch, vé máy bay, khách sạn",
+          "rate": "",
+          "maxCashback": ""
         },
         {
           "category": "Khác",

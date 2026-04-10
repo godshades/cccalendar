@@ -1,14 +1,12 @@
 	Thể loại	Phần trăm	Max mỗi tháng
 Cake Freedom	Online Tiki, Shopee - 5262	20	200,000 ₫
-	Du lịch - voucher traveloka	20	200,000 ₫
-	Thời trang - 5611- ít chỗ hoàn, check mcc4u	20	200,000 ₫
-	Chọn 2: Siêu thị, ăn uống, di chuyển, CHTL, bảo hiểm, Khách sạn, ví điện tử, hàng không, rạp chiếu phim	20	200,000 ₫
-		20	200,000 ₫
+	Du lịch - 4722	20	200,000 ₫
+	Thời trang - 5611	20	200,000 ₫
 VIB Super Card	POS nước ngoài	15	1,000,000 ₫
 	Du lịch	10	
 	Mua sắm	10	
 	Ăn uống	10	
-	Online - không áp dụng MCC 6300 và 7399	5	
+	Online - Loại MCC 6300 và 7399	5	
 VIB Online Plus 2in1	Online nước ngoài	5	600,000 ₫
 	Online trong nước	3	
 	Khác	0.1	
@@ -17,15 +15,12 @@ VIB Family Link	Giáo dục, Bảo Hiểm, Y Tế	5	1,000,000 ₫
 	Giáo dục, Bảo Hiểm, Y Tế	10	
 	Khác	0.1	
 VIB Travel Élite	POS tại nước ngoài	1 / 20000đ	k giới hạn
-"VIB Cashback
-"	Khác	0.1	k giới hạn
+VIB Cashback
+	Khác	0.1	k giới hạn
 	Ăn uống	5-10	800-2tr
 	Giải trí		
 	Ads		
-"VIB Rewards Unlimited
-"	POS Trung tâm mua sắm và Cửa hàng miễn thuế	1	k giới hạn
-	POS Siêu thị	0.5	
-	Khác	0.1	
+VIB Rewards Unlimited
 Eximbank Priority Signature	POS nước ngoài	10	1,000,000 ₫
 	Ăn uống	5	
 	Du lịch, khách sạn	3	
@@ -72,10 +67,7 @@ VPBank FreeWays	Nước ngoài	4	500,000 ₫
 VPBank  S Rewards	Shopee, Shopee food	12	400,000 ₫
 	Ăn uống, Siêu thị, Di chuyển	4	200,000 ₫
 	Khác	0.1	K giới hạn
-VPBank  GameON	game, mua vé xem phim, vé ca nhạc, thanh toán phí hội viên	https://www.vpbank.com.vn/-/media/vpbank-latest/1retail/cards/credit-cards/The-le-Uu-dai-dai-han-danh-cho-chu-the-tin-dung-VPBank-GameON-Mastercard-website.pdf	
-	phụ kiện tại cửa hàng điện tử		
-	"ăn uống và các giao dịch không tiếp 
-xúc qua ví "		
+VPBank  GameON			
 VPBank Super Shopee Platinum	Shopee, Shopee food	10	400,000 ₫
 	Ăn uống, Siêu thị, Di chuyển	2	200,000 ₫
 	Khác	0.1	K giới hạn
@@ -93,27 +85,10 @@ MSB mDigi	Ăn uống	20	300,000 ₫
 	Sản phẩm số (sách, nhạc, game…)	20	
 MSB Online	Vé xem phim online	10	300,000 ₫
 	Online trang TMĐT: S, L, Tiktok	10	
-MSB Family	Gym, Yoga, Fitness	"30tr - 30
-10-30tr - 20
-< 10 - 10"	"30tr - 900k
-10-30tr - 700k
-< 10 - 500k"
+MSB Family	Gym, Yoga, Fitness	
 	Giáo dục, hiệu sách		
 	Khóa học kỹ năng, nghệ thuật, triển lãm, bảo tàng		
-	Siêu thị	5	
-Vietin Eliv3 Credit - RIP	Du lịch	10	300,000 ₫
-	Giải trí	10	
-	Y tế	10	300,000 ₫
-	Giáo dục	10	
-	Online	2	200,000 ₫
-	Siêu thị	2	200,000 ₫
-	Du lịch	15	500,000 ₫
-	Giải trí	15	
-	Y tế	15	500,000 ₫
-	Giáo dục	15	
-	Online	5	300,000 ₫
-	Siêu thị	5	300,000 ₫
-Thẻ OCB			
+	Siêu thị	5		
 TPBank EVO	Online	10	500,000 ₫
 	Online	5	
 	Online	1	
@@ -150,13 +125,6 @@ Sacombank American Express	Máy bay, khách sạn, đại lý du lịch	20	1,000
 	POS nước ngoài	10	
 	Online nước ngoài	5	
 	Khác	0.5	
-KBank	Thái Lan	15	1,000,000 ₫
-	Du lịch (Khách sạn, thuê xe, hàng không)	10	
-	Siêu thị và tạp hóa	10	
-	Nhà hàng	10	
-	Giải trí & Đăng ký theo dõi 	10	
-	Sức khỏe & Làm đẹp	10	
-	Online/Thương mại điện tử 	10	
 Woori Classic	Online TMĐT	5	300,000 ₫
 	Máy bay, khách sạn, agoda, trip .com	5	300,000 ₫
 Woori Gold	Online TMĐT	8	300,000 ₫
@@ -176,14 +144,6 @@ LPBank Signature	Du lịch, khách sạn, vé	2	∞
 LP JCB ULTIMATE	Y tế, giáo dục, bảo hiểm	15	800,000 ₫
 	Nghỉ dưỡng/ăn uống/Spa	10	
 	Khác	0.5	
-MB HI Cashback Credit - RIP	Ăn uống, cà phê, giáo dục	1	500,000 ₫
-	Ăn uống, cà phê, du lịch, khách sạn	1	
-	Ăn uống, cà phê, bảo hiểm	1	
-	Online, bảo hiểm	1	
-	Ăn uống, cà phê, giáo dục	1	1,000,000 ₫
-	Ăn uống, cà phê, du lịch, khách sạn	1	
-	Ăn uống, cà phê, bảo hiểm	1	
-	Online, bảo hiểm	1	
 Sea Signature	Y tế: Thuốc, Tá dược	10	2,000,000 ₫
 	Spa/Massage	5	
 	Khách sạn/Nhà nghỉ/Khu nghỉ mát	3	
@@ -222,10 +182,7 @@ HSBC Live+	Ẩm thực	6	200,000 ₫
 	Khác	0.3	
 Shinhan 365	Siêu thị (POS)	10	400,000 ₫
 	POS nước ngoài	3	200,000 ₫
-"Shinhan Hi-Point
-Platinum
-Gold
-Classic"	Store: Samsung, nguyenkim	5	400,000 ₫
+Shinhan Hi-Point	Store: Samsung, nguyenkim	5	400,000 ₫
 	Online: Shopee		
 	Di chuyển: Grab		
 	Du lịch: VNA, agoda		
@@ -234,11 +191,6 @@ SHB Cashback	Siêu thị,Bảo hiểm, Thời trang	5	300,000 ₫
 	Giáo dục, Y tế		500,000 ₫
 	Siêu thị,Bảo hiểm, Thời trang	10	600,000 ₫
 	Giáo dục, Y tế		1,000,000 ₫
-Nam Á Happy Digital	Online nước ngoài	10	500,000 ₫
-	Online trong nước	2	
-Nam Á Happy Lady	Siêu thị, CHTL	20	300,000 ₫
-	Nhà hàng		400,000 ₫
-	Du lịch		500,000 ₫
 HDBank JCB Ultimate	chi tiêu tại Nhật Bản	20	500,000 ₫
 	du lịch, khách sạn, resort	15	300,000 ₫
 	nước ngoài	6	200,000 ₫
