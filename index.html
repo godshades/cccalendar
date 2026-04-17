@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CC Calendar — Theo dõi thanh toán thẻ tín dụng, ngày đến hạn và hoàn tiền.">
   <title>CC Calendar — Theo Dõi Thẻ Tín Dụng</title>
+  <meta name="google-site-verification" content="ZDaG2ajLMkcYmxI70sDggaMUTpoL24GPgibBZpS7L_k" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -311,7 +312,8 @@
               :class="card.maxReached ? 'bg-neutral-50' : 'bg-gradient-to-r from-brand-50 to-brand-100/50'">
               <div class="flex items-start justify-between">
                 <div class="cursor-pointer group/title" @click="openEditModal(card)">
-                  <h3 class="text-sm sm:text-base font-bold text-neutral-900 group-hover/title:text-brand-600 transition-colors"
+                  <h3
+                    class="text-sm sm:text-base font-bold text-neutral-900 group-hover/title:text-brand-600 transition-colors"
                     :class="card.maxReached ? 'line-through text-neutral-500' : ''" x-text="card.name"></h3>
                   <p class="text-xs sm:text-sm text-neutral-500 mt-0.5" x-text="card.bank"></p>
                 </div>
@@ -644,13 +646,15 @@
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-sm font-medium text-neutral-700 mb-1.5">Giới hạn hoàn tiền (VND)</label>
-            <input type="text" x-model="selectedMaxCashback" @blur="selectedMaxCashback = formatNumberWithCommas(selectedMaxCashback)"
+            <input type="text" x-model="selectedMaxCashback"
+              @blur="selectedMaxCashback = formatNumberWithCommas(selectedMaxCashback)"
               class="w-full px-4 py-3 sm:py-2.5 border border-neutral-300 rounded-lg text-base sm:text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-colors"
               placeholder="vd: 1,000,000">
           </div>
           <div>
             <label class="block text-sm font-medium text-neutral-700 mb-1.5">Đã sử dụng (VND)</label>
-            <input type="text" x-model="selectedCurrentCashback" @blur="selectedCurrentCashback = formatNumberWithCommas(selectedCurrentCashback)"
+            <input type="text" x-model="selectedCurrentCashback"
+              @blur="selectedCurrentCashback = formatNumberWithCommas(selectedCurrentCashback)"
               class="w-full px-4 py-3 sm:py-2.5 border border-neutral-300 rounded-lg text-base sm:text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-colors"
               placeholder="vd: 500,000">
           </div>
@@ -941,8 +945,8 @@
   </div>
 
   <!-- ==================== EDIT CARD MODAL ==================== -->
-  <div x-show="editingCardId !== null" x-cloak
-    class="fixed inset-0 z-50 flex sm:items-center justify-center p-0 sm:p-4" style="display: none;">
+  <div x-show="editingCardId !== null" x-cloak class="fixed inset-0 z-50 flex sm:items-center justify-center p-0 sm:p-4"
+    style="display: none;">
     <div class="absolute inset-0 bg-black/40" @click="closeEditModal()"></div>
 
     <div
